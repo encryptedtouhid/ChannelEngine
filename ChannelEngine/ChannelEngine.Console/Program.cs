@@ -17,20 +17,32 @@ namespace ChannelEngine.Console
 {
     public class Program
     {
-        static void Main(string[] args)
-        {           
+        public static List<Order> AllOrders = new List<Order>();
+        public static List<Product> TopFiveProduct = new List<Product>();
+        public static void Main(string[] args)
+        {          
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IOrderService, OrderService>()
                 .BuildServiceProvider();
+            
+            var OrderService = serviceProvider.GetService<IOrderService>();
+
 
             System.Console.WriteLine("Fetch all orders with status IN_PROGRESS from the API : \n");
             Search search = new Search();
             search.Status = StatusConstants.InProgress;
-            var OrderService = serviceProvider.GetService<IOrderService>();            
+            AllOrders = OrderService.GetAllOrder(search);
             Table TotalTable = new Table();
-            TotalTable.From<Order>(OrderService.GetAllOrder(search));
+            TotalTable.From<Order>(AllOrders);
             System.Console.Write(TotalTable.ToString());
+
+
+            System.Console.WriteLine("List of top 5 products sold in descending order : \n");
+            TopFiveProduct = OrderService.GetTopFiveProducts(AllOrders);
+            Table TotalProductTable = new Table();
+            TotalProductTable.From<Product>(TopFiveProduct);
+            System.Console.Write(TotalProductTable.ToString());
             if (Debugger.IsAttached)
             {
                 System.Console.ReadLine();
