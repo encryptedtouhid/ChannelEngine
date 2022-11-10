@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ChannelEngine.Business.Models
 {
     public class Search
     {
-        [DisplayName("statuses")]
+        [JsonProperty(PropertyName = "statuses")]
         public string Status { get; set; }
         
-        [DisplayName("apikey")]
+        [JsonProperty(PropertyName = "apikey")]
         public string ApiKey { get; set; }
 
     }
