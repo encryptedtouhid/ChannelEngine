@@ -6,7 +6,7 @@ namespace ChannelEngine.Business.Models
 {
     public class StockLocation
     {
-        public int Id { get; set; }
+        public double Id { get; set; }
         public string Name { get; set; }
     }
 

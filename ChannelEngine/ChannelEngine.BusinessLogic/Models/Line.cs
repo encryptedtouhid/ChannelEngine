@@ -19,19 +19,19 @@ namespace ChannelEngine.Business.Models
         public double OriginalUnitVat { get; set; }
         public double OriginalLineTotalInclVat { get; set; }
         public double OriginalLineVat { get; set; }
-        public int OriginalFeeFixed { get; set; }
+        public double OriginalFeeFixed { get; set; }
         public string BundleProductMerchantProductNo { get; set; }
         public string JurisCode { get; set; }
         public string JurisName { get; set; }
-        public int VatRate { get; set; }
+        public double VatRate { get; set; }
         public List<ExtraDatas> ExtraData { get; set; }
         public string ChannelProductNo { get; set; }
         public string MerchantProductNo { get; set; }
-        public int Quantity { get; set; }
-        public int CancellationRequestedQuantity { get; set; }
+        public double Quantity { get; set; }
+        public double CancellationRequestedQuantity { get; set; }
         public double UnitPriceInclVat { get; set; }
-        public int FeeFixed { get; set; }
-        public int FeeRate { get; set; }
+        public double FeeFixed { get; set; }
+        public double FeeRate { get; set; }
         public string Condition { get; set; }
         public DateTime ExpectedDeliveryDate { get; set; }
     }
