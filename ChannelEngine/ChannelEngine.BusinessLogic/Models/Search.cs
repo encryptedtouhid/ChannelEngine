@@ -8,11 +8,10 @@ namespace ChannelEngine.Business.Models
     public class Search
     {
         [DisplayName("statuses")]
-        public string[] Status { get; set; }
-
-
-        [DisplayName("emailAddresses")]
-        public string[] EmailAddress { get; set; }
+        public string Status { get; set; }
+        
+        [DisplayName("apikey")]
+        public string ApiKey { get; set; }
 
     }
 }
