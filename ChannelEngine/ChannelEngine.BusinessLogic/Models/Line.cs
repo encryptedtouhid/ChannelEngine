@@ -20,11 +20,11 @@ namespace ChannelEngine.Business.Models
         public double OriginalLineTotalInclVat { get; set; }
         public double OriginalLineVat { get; set; }
         public int OriginalFeeFixed { get; set; }
-        public object BundleProductMerchantProductNo { get; set; }
-        public object JurisCode { get; set; }
-        public object JurisName { get; set; }
+        public string BundleProductMerchantProductNo { get; set; }
+        public string JurisCode { get; set; }
+        public string JurisName { get; set; }
         public int VatRate { get; set; }
-        public List<object> ExtraData { get; set; }
+        public List<ExtraDatas> ExtraData { get; set; }
         public string ChannelProductNo { get; set; }
         public string MerchantProductNo { get; set; }
         public int Quantity { get; set; }

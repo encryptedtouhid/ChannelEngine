@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChannelEngine.Business.Models
 {
-    public class Content
+    public class Order
     {
         public int Id { get; set; }
         public string ChannelName { get; set; }
