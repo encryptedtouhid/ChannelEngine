@@ -8,6 +8,6 @@ namespace ChannelEngine.Business.Models
     public class StockLocations
     {
         public long Stock { get; set; }
-        public long StockLocationId { get; set; }
+        public int StockLocationId { get; set; }
     }
 }

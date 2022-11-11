@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -22,7 +23,6 @@ namespace ChannelEngine.Business.Utility
         {
             string ActionUrl = "/orders";
             string Url = EndPodoubleUrl + ActionUrl;         
-            using var client = new HttpClient();
             searchPeram.ApiKey = ApiKey;
             string ApiEndPodoubleURl = Url +"?"+ GetQueryString(searchPeram); ;
 
@@ -43,6 +43,30 @@ namespace ChannelEngine.Business.Utility
                              select p.Name + "=" + HttpUtility.UrlEncode(p.GetValue(obj, null).ToString());
 
             return String.Join("&", properties.ToArray());
+        }
+        public static async Task<string> UpdateProductStockDataAsync(Search searchPeram, StockField stockField)
+        {
+            string ActionUrl = "/offer/stock";
+            string Url = EndPodoubleUrl + ActionUrl;
+
+            searchPeram.ApiKey = ApiKey;
+            string ApiEndPodoubleURl = Url + "?" + GetQueryString(searchPeram); ;
+
+            var httpClient = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Put, ApiEndPodoubleURl);
+
+            var productValue = new ProductInfoHeaderValue("ChannelEngineApiClient", "1.0");
+            request.Headers.UserAgent.Add(productValue);
+
+            httpClient.DefaultRequestHeaders.Accept
+            .Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
+
+
+            string company = "[" + JsonConvert.SerializeObject(stockField) + "]";
+            var requestContent = new StringContent(company, Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(ApiEndPodoubleURl, requestContent);
+
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

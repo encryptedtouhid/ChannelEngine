@@ -8,9 +8,12 @@ namespace ChannelEngine.Business.Services.Interfaces
 {
     public interface IOrderService
     {
-        List<Order> GetAllOrder(Search search);
+        List<Order> GetAllOrder();
 
         List<Product> GetTopFiveProducts(List<Order> orders);
+
+
+        StockField GetStockFieldData(List<Order> orders, Product product);
 
         String UpdateProductQuantity(StockField stockField);
     }

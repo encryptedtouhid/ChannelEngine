@@ -9,6 +9,6 @@ namespace ChannelEngine.Business.Models
     {
         public string MerchantProductNo { get; set; }
 
-        public StockLocations[] StockLocations { get; set; }
+        public List<StockLocations> StockLocations { get; set; }
     }
 }

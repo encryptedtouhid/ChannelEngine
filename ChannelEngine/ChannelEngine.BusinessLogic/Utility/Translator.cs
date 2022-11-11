@@ -13,7 +13,7 @@ namespace ChannelEngine.Business.Utility
         {
             return JsonConvert.DeserializeObject<ResponseResult>(Content);
         }
-        
+
 
 
     }

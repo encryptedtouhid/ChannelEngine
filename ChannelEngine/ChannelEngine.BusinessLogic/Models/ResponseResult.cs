@@ -6,7 +6,7 @@ namespace ChannelEngine.Business.Models
 {
     public class ResponseResult
     {
-        public List<Order> Content { get; set; }
+        public Object Content { get; set; }
         public double Count { get; set; }
         public double TotalCount { get; set; }
         public double ItemsPerPage { get; set; }
