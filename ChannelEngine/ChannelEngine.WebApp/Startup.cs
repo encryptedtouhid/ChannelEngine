@@ -1,3 +1,5 @@
+using ChannelEngine.Business.Services.Implementations;
+using ChannelEngine.Business.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +24,7 @@ namespace ChannelEngine.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IOrderService, OrderService>();
             services.AddControllersWithViews();
         }
 

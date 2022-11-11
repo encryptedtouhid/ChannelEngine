@@ -9,4 +9,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.29" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChannelEngine.BusinessLogic\ChannelEngine.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>

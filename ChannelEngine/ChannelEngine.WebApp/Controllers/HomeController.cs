@@ -1,4 +1,7 @@
-﻿using ChannelEngine.WebApp.Models;
+﻿using ChannelEngine.Business.Models;
+using ChannelEngine.Business.Services.Implementations;
+using ChannelEngine.Business.Services.Interfaces;
+using ChannelEngine.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +15,19 @@ namespace ChannelEngine.WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IOrderService _orderService;
+        private static List<Order> AllOrders = new List<Order>();
+        public HomeController(ILogger<HomeController> logger, IOrderService orderService)
         {
             _logger = logger;
+            _orderService = orderService;
         }
 
         public IActionResult Index()
         {
-            return View();
+
+            AllOrders = _orderService.GetAllOrder();
+            return View(AllOrders);
         }
 
         public IActionResult Privacy()
