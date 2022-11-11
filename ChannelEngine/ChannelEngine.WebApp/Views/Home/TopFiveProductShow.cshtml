@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ChannelEngine.Business.ViewModels.Product>
+
+@{
+    ViewData["Title"] = "Top 5 Product";
+}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<div class="row text-center">
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert alert-info" role="alert">
+            @Html.Raw(@TempData["msg"].ToString().Split(',')[0].Trim())
+        </div>
+    }
+    <br />
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead thead-dark>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        GTIN
+                    </th>
+                    <th class="w-50">
+                        Product Name
+                    </th>
+                    <th class="w-25">
+                        Total Order Quantity
+                    </th>
+                    <th class="w-50">
+                        Action
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.GTIN)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.TotalQuantity)
+                        </td>
+                        <td scope="row">
+                            @Html.ActionLink("Stock Update: + 25 QTY","StockUpdate",new { Id=item.Id}, htmlAttributes: new { @class = "btn btn-primary"})
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

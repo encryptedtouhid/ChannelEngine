@@ -4,62 +4,73 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <table class="table">
-        <thead thead-dark>
-            <tr>
-                <th>
-                   ID
-                </th>
-                <th class="w-25">
-                    Channel Name
-                </th>
-                <th>
-                    Status
-                </th>
-                <th class="w-25">
-                    Total
-                </th>
-                <th class="w-25">
-                    Vat
-                </th>
-                <th scope="col">
-                    Phone
-                </th>
-                <th class="w-50">
-                    Order Date
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.ChannelName)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.TotalInclVat)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.TotalVat)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.OrderDate)
-                    </td>
-                   
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col">
+        @Html.ActionLink("Top 5 products sold", "TopFiveProductShow",  null, htmlAttributes: new { @class = "btn btn-primary"})
+    </div>
 </div>
+<div class="row">
+    <br />
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead thead-dark>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th class="w-25">
+                        Channel Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th class="w-25">
+                        Total
+                    </th>
+                    <th class="w-25">
+                        Vat
+                    </th>
+                    <th scope="col">
+                        Phone
+                    </th>
+                    <th class="w-50">
+                        Order Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.ChannelName)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.TotalInclVat)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.TotalVat)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.OrderDate)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
